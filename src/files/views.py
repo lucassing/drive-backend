@@ -1,10 +1,19 @@
 from rest_framework import viewsets
-from files.models import Files
-from files.serializers import FilesSerializer
+from files.models import File, Folder
+from files.serializers import FilesSerializer, FoldersSerializer
 
-class FilesViewSet(viewsets.ReadOnlyModelViewSet):
+class FilesViewSet(viewsets.ModelViewSet):
     """
-    This viewset automatically provides `list` and `retrieve` actions.
+    This viewset that provides default `create()`, `retrieve()`, `update()`, `partial_update()`, `destroy()` and `list()` actions for files.
     """
-    queryset = Files.objects.all()
+    queryset = File.objects.all()
     serializer_class = FilesSerializer
+
+    
+
+class FoldersViewSet(viewsets.ModelViewSet):
+    """
+    This viewset that provides default `create()`, `retrieve()`, `update()`, `partial_update()`, `destroy()` and `list()` actions for folders.
+    """
+    queryset = Folder.objects.all()
+    serializer_class = FoldersSerializer
