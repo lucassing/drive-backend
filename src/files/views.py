@@ -1,4 +1,4 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, permissions
 from files.models import File, Folder
 from files.serializers import FilesSerializer, FoldersSerializer
 
@@ -8,6 +8,11 @@ class FilesViewSet(viewsets.ModelViewSet):
     """
     queryset = File.objects.all()
     serializer_class = FilesSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+    
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+        return super().perform_create(serializer)
 
     
 
@@ -17,3 +22,8 @@ class FoldersViewSet(viewsets.ModelViewSet):
     """
     queryset = Folder.objects.all()
     serializer_class = FoldersSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+        return super().perform_create(serializer)

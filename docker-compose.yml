@@ -1,4 +1,4 @@
-version: "3.9"  # optional since v1.27.0
+version: "3.9" # optional since v1.27.0
 services:
   api:
     container_name: drive-api
@@ -6,8 +6,7 @@ services:
     depends_on:
       - db
     command: >
-      sh -c "python manage.py collectstatic --no-input &&
-      daphne -b 0.0.0.0 drive.asgi:application"
+      sh -c "python manage.py collectstatic --no-input && daphne -b 0.0.0.0 drive.asgi:application"
     ports:
       - "8000:8000"
     volumes:
@@ -18,6 +17,7 @@ services:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY}
+      - DJANGO_SETTINGS_MODULE=drive.settings
   db:
     image: postgres
     volumes:
