@@ -21,13 +21,16 @@ class UserFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = get_user_model()
 
+
 class FolderFactory(factory.django.DjangoModelFactory):
     """Folder factory."""
     parent = factory.LazyAttribute(lambda x: FolderFactory(parent=None))
     name = factory.LazyAttribute(lambda x: faker.name())
     owner = factory.SubFactory(UserFactory)
+
     class Meta:
         model = Folder
+
 
 class FileFactory(factory.django.DjangoModelFactory):
     """File factory."""
@@ -35,5 +38,6 @@ class FileFactory(factory.django.DjangoModelFactory):
     owner = factory.SubFactory(UserFactory)
     file = factory.django.FileField(filename='test.dat', data='testdata')
     folder = factory.SubFactory(FolderFactory)
+
     class Meta:
         model = File

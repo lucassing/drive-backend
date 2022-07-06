@@ -26,12 +26,12 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','0.0.0.0']
+ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0']
 
 
 # Application definition
 
-LOCAL_APPS = ['files',]
+LOCAL_APPS = ['files', ]
 
 THIRD_PARTY_APPS = [
     'django.contrib.admin',
@@ -40,10 +40,9 @@ THIRD_PARTY_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',]
+    'rest_framework', ]
 
 INSTALLED_APPS = THIRD_PARTY_APPS + LOCAL_APPS
-
 
 
 MIDDLEWARE = [
@@ -91,7 +90,7 @@ DATABASES = {
         'PORT': 5432,
         'TEST': {
                 'NAME': 'mytestdatabase',
-                },
+        },
     }
 }
 
