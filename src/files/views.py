@@ -9,7 +9,7 @@ class FilesViewSet(viewsets.ModelViewSet):
     """
     queryset = File.objects.all()
     serializer_class = FilesSerializer
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+    permission_classes = (permissions.IsAuthenticated,)
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
@@ -22,7 +22,7 @@ class FoldersViewSet(viewsets.ModelViewSet):
     """
     queryset = Folder.objects.all()
     serializer_class = FoldersSerializer
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+    permission_classes = (permissions.IsAuthenticated,)
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)

@@ -40,7 +40,8 @@ THIRD_PARTY_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework', ]
+    'rest_framework',
+    'drf_yasg']
 
 INSTALLED_APPS = THIRD_PARTY_APPS + LOCAL_APPS
 

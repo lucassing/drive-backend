@@ -10,7 +10,7 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - .:/code
+      - ./:/code
       - ${PATH_UPLOADED_DATA}:/var/www/driveapi/media/
     environment:
       - POSTGRES_DB=${POSTGRES_DB}
