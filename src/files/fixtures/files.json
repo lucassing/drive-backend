@@ -1,0 +1,24 @@
+[
+    {
+        "model": "files.folder",
+        "pk": 1,
+        "fields": {
+            "parent": null,
+            "name": "Data",
+            "modified": "2022-07-06T08:15:35.189Z",
+            "created": "2022-07-06T08:15:35.189Z",
+            "owner": 1
+        }
+    },
+    {
+        "model": "files.folder",
+        "pk": 2,
+        "fields": {
+            "parent": 1,
+            "name": "Trash",
+            "modified": "2022-07-06T08:16:02.775Z",
+            "created": "2022-07-06T08:16:02.775Z",
+            "owner": 1
+        }
+    }
+]
