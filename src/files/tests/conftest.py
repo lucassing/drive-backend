@@ -7,16 +7,16 @@ from rest_framework.test import APIClient
 
 # Fixtures
 @pytest.fixture
-def client():
+def unauthenticated_client():
     return APIClient()
 
 
 @pytest.fixture
-def api_client(client):
+def api_client(unauthenticated_client):
     user = UserFactory()
     # Authenticate
-    client.login(username=user.username, password='test_password')
-    return client
+    unauthenticated_client.login(username=user.username, password='test_password')
+    return unauthenticated_client
 
 
 @pytest.fixture

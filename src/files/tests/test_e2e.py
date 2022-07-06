@@ -13,6 +13,10 @@ pytestmark = pytest.mark.django_db
 class TestFilesEndpoints:
     expected_keys = ['id', 'name', 'uploaded', 'modified', 'owner', 'file', 'folder']
 
+    def test_unauthenticated_client(self, unauthenticated_client):
+        response = unauthenticated_client.get(reverse('files-list'))
+        assert response.status_code == 403
+
     def test_get_list(self, api_client):
         FileFactory.create_batch(3)
         response = api_client.get(reverse('files-list'))
@@ -70,6 +74,10 @@ class TestFilesEndpoints:
 class TestFoldersEndpoints:
 
     expected_keys = ['id', 'parent', 'name', 'created', 'modified', 'owner']
+
+    def test_unauthenticated_client(self, unauthenticated_client):
+        response = unauthenticated_client.get(reverse('files-list'))
+        assert response.status_code == 403
 
     def test_get_list(self, api_client):
         FolderFactory.create_batch(3, parent=None)
