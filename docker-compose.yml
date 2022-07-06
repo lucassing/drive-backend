@@ -1,6 +1,7 @@
 version: "3.9" # optional since v1.27.0
 services:
   api:
+    restart: always
     container_name: drive-api
     build: .
     depends_on:
@@ -29,3 +30,10 @@ services:
       - POSTGRES_DB=${POSTGRES_DB}
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+  redis:
+    restart: always
+    container_name: drive-api-redis
+    image: redis:7.0.2
+    command: redis-server
+    ports:
+      - '6379:6379'
